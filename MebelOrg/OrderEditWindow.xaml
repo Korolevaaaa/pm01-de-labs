@@ -1,0 +1,32 @@
+<Window x:Class="MebelOrg.OrderEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Заказ — ООО «МебельОрг»" Height="600" Width="520"
+        WindowStartupLocation="CenterScreen" FontFamily="Calibri" Background="White">
+    <StackPanel Margin="16">
+        <TextBlock x:Name="Header" Text="Редактирование заказа" FontSize="18" FontWeight="Bold" Foreground="#0000FF" Margin="0,0,0,12"/>
+        <TextBlock Text="Дата заказа"/><DatePicker x:Name="OrderDatePicker" Margin="0,2,0,6"/>
+        <TextBlock Text="Дата доставки"/><DatePicker x:Name="DeliveryDatePicker" Margin="0,2,0,6"/>
+        <TextBlock Text="Пункт выдачи"/><ComboBox x:Name="PickupBox" Margin="0,2,0,6"/>
+        <TextBlock Text="ФИО клиента"/><TextBox x:Name="ClientBox" Margin="0,2,0,6"/>
+        <TextBlock Text="Код получения"/><TextBox x:Name="CodeBox" Margin="0,2,0,6"/>
+        <TextBlock Text="Статус"/><ComboBox x:Name="StatusBox" Margin="0,2,0,10">
+            <ComboBoxItem>Новый</ComboBoxItem>
+            <ComboBoxItem>Завершен</ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock Text="Состав заказа" FontWeight="Bold"/>
+        <ListBox x:Name="ItemsList" Height="110" Margin="0,4,0,6"/>
+        <DockPanel Margin="0,0,0,10">
+            <TextBox x:Name="ItemArticle" DockPanel.Dock="Left" Width="120" ToolTip="Артикул"/>
+            <TextBox x:Name="ItemQty" Width="60" Margin="6,0" ToolTip="Кол-во"/>
+            <Button Content="Добавить позицию" Click="AddItem_Click" Padding="10,4"/>
+            <Button Content="Убрать" Click="RemoveItem_Click" Padding="10,4" Margin="6,0,0,0"/>
+        </DockPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Click="Save_Click" Padding="16,7" Background="#00FFFF" Foreground="Black" BorderThickness="0" Margin="0,0,8,0"/>
+            <Button Content="Отмена" Click="Cancel_Click" Padding="16,7"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
