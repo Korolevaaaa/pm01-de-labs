@@ -116,9 +116,21 @@ public partial class ProductEditWindow : Window
             MessageBox.Show("Заполните артикул и наименование.");
             return;
         }
-        if (!decimal.TryParse(PriceBox.Text, out var price)) { MessageBox.Show("Цена должна быть числом."); return; }
-        int.TryParse(DiscountBox.Text, out var disc);
-        int.TryParse(StockBox.Text, out var stock);
+        if (!decimal.TryParse(PriceBox.Text, out var price) || price < 0)
+        {
+            MessageBox.Show("Цена должна быть неотрицательным числом.");
+            return;
+        }
+        if (!int.TryParse(DiscountBox.Text, out var disc) || disc < 0 || disc > 100)
+        {
+            MessageBox.Show("Скидка должна быть целым числом от 0 до 100.");
+            return;
+        }
+        if (!int.TryParse(StockBox.Text, out var stock) || stock < 0)
+        {
+            MessageBox.Show("Количество на складе должно быть целым неотрицательным числом.");
+            return;
+        }
 
         string photo = null;
         if (_photoRemoved) photo = null;
